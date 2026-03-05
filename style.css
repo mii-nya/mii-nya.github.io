@@ -2350,3 +2350,11 @@ body.lightbox-open{
 .modal__video-wrap[hidden]{
   display: none !important;
 }
+
+
+/* 作品モーダルの文章折り返し */
+.works-modal__desc{
+  white-space: normal;
+  overflow-wrap: anywhere; /* ←これが効く */
+  word-break: break-word;  /* 保険 */
+}

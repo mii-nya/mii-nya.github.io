@@ -559,7 +559,7 @@ setInterval(() => {
     badge.textContent = data.badge || "Work";
     if (muted) muted.textContent = data.muted || "";
     title.textContent = data.title || "";
-    desc.textContent = data.desc || "";
+    desc.innerHTML = data.desc || "";
 
     // v102+: mixed media support (images + videos as slides)
     clickUrl = (data.url || "").trim();

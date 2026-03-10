@@ -608,17 +608,40 @@ a.link-pdf:hover{
   padding-left:14px;
 }
 
-.works-track.is-ready{
-  animation: marquee 26s linear infinite;
-  will-change: transform;
+/* JSで中身を入れた後にだけ動かす */
+.works-track.is-animated{
+  animation:marquee 26s linear infinite;
 }
 
+/* hoverできる端末だけ停止を有効化 */
 @media (hover: hover) and (pointer: fine){
-  .works-marquee:hover .works-track.is-ready{
+  .works-marquee:hover .works-track.is-animated{
     animation-play-state: paused;
+  }
+
+  .work-chip:hover{
+    transform:translateY(-3px);
+    border-color:rgba(230,199,122,.45);
+    background:rgba(230,199,122,.06);
   }
 }
 
+/* スマホではhover系を無効化 */
+@media (hover: none), (pointer: coarse){
+  .works-track.is-animated{
+    animation-play-state: running !important;
+  }
+
+  .work-chip{
+    transform:none;
+  }
+
+  .work-chip:hover{
+    transform:none;
+    border-color:rgba(230,199,122,.22);
+    background:rgba(11,20,34,.38);
+  }
+}
 @keyframes marquee{
   0%{transform:translateX(0);}
   100%{transform:translateX(-50%);}

@@ -1876,77 +1876,22 @@ const close = () => {
 })();
 
 /* Top Works auto build from works.html */
-
-// (function(){
-
-//   const track = document.getElementById("topWorksTrack");
-//   if(!track) return;
-
-//   fetch("works.html")
-//     .then(res => res.text())
-//     .then(html => {
-
-//       const doc = new DOMParser().parseFromString(html,"text/html");
-
-//       const cards = [...doc.querySelectorAll(".work-card")];
-
-//       const top = cards.slice(0,12);
-
-//       const list = [...top, ...top];
-
-//       const frag = document.createDocumentFragment();
-
-//       list.forEach(card => {
-
-//         const title = card.dataset.title || "";
-//         const badge = card.dataset.badge || "";
-//         const bg = card.dataset.bg || "";
-//         const id = card.dataset.id || "";
-//         const text = card.querySelector(".card__text")?.textContent || "";
-
-//         const a = document.createElement("a");
-
-//         a.className = "work-chip";
-//         a.href = `works.html?open=${id}`;
-
-//         if(bg){
-//           a.style.setProperty("--bg", `url('${bg}')`);
-//         }
-
-//         a.innerHTML = `
-//         <div class="work-chip__top">
-//           <span class="badge">${badge}</span>
-//         </div>
-
-//         <div class="work-chip__title">
-//           ${title}
-//         </div>
-
-//         <div class="work-chip__text">
-//           ${text}
-//         </div>
-//         `;
-
-//         frag.appendChild(a);
-
-//       });
-
-//       track.appendChild(frag);
-
-//     });
-
-// })();
-
-/* Top Works auto build from works.html */
 (function(){
   const track = document.getElementById("topWorksTrack");
-  if (!track) return;
+  if(!track) return;
+
+  const startMarquee = () => {
+    track.classList.remove("is-animated");
+    void track.offsetWidth; // reflow
+    track.classList.add("is-animated");
+  };
 
   fetch("works.html")
     .then(res => res.text())
     .then(html => {
       const doc = new DOMParser().parseFromString(html, "text/html");
       const cards = [...doc.querySelectorAll(".work-card")];
+
       const top = cards.slice(0, 12);
       const list = [...top, ...top];
       const frag = document.createDocumentFragment();
@@ -1956,13 +1901,13 @@ const close = () => {
         const badge = card.dataset.badge || "";
         const bg = card.dataset.bg || "";
         const id = card.dataset.id || "";
-        const text = card.querySelector(".card__text")?.textContent || "";
+        const text = card.querySelector(".card__text")?.textContent?.trim() || "";
 
         const a = document.createElement("a");
         a.className = "work-chip";
         a.href = `works.html?open=${id}`;
 
-        if (bg) {
+        if(bg){
           a.style.setProperty("--bg", `url('${bg}')`);
         }
 
@@ -1980,11 +1925,8 @@ const close = () => {
       track.innerHTML = "";
       track.appendChild(frag);
 
-      // いったん止めて再計算
-      track.classList.remove("is-ready");
-      void track.offsetWidth; // reflow を強制
       requestAnimationFrame(() => {
-        track.classList.add("is-ready");
+        startMarquee();
       });
     })
     .catch(err => {

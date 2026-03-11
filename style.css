@@ -669,7 +669,10 @@ a.link-pdf:hover{
   padding:18px 0;
 }
 .footer__inner{display:flex; align-items:center; justify-content:space-between; gap:12px;}
-.social{display:flex; gap:10px;}
+.social{
+  display:flex; gap:10px;
+  justify-content: flex-end;
+}
 .social__link{
   width:42px; height:42px;
   border-radius:14px;
@@ -2399,3 +2402,7 @@ body.lightbox-open{
   }
 
 }
+
+  #hero-comment{
+    font-size:1.2rem;
+  }

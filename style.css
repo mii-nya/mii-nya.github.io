@@ -2378,3 +2378,24 @@ body.lightbox-open{
   margin-block-start: 0.3em;
 }
     
+
+.works-title{
+  display:flex;
+  align-items:baseline;
+  gap:16px;
+}
+
+.works-note{
+  font-size:0.9rem;
+  opacity:0.8;
+}
+
+@media (max-width: 768px){
+
+  .works-title{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:0px;
+  }
+
+}

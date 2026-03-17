@@ -471,6 +471,13 @@ a.link-pdf:hover{
   flex-shrink: 0;
 }
 
+.skill-icon#it{
+  transform: translate(0px, -2px); 
+  width: 1.5em;
+  height: 1.5em;
+  flex-shrink: 0;
+}
+
 @media(max-width:1100px){
 .skill-icon#ai{
   transform: translate(0px, 9px); 
@@ -492,6 +499,10 @@ a.link-pdf:hover{
   transform: translate(0px, -3px); 
   margin-right: 5px;
 }
+.skill-icon#it{
+  transform: translate(0px, 0px); 
+  margin-right: 5px;
+}
 }
 
 
@@ -510,6 +521,10 @@ a.link-pdf:hover{
 }
 .skill-icon#chatGPT{
   transform: translate(0px, 8px); 
+  margin-right: 10px;
+}
+.skill-icon#it{
+  transform: translate(0px, 6px); 
   margin-right: 10px;
 }
 }
@@ -2592,4 +2607,12 @@ body.lightbox-open{
   .snapwidget-widget{
     height: 520px;
   }
+}
+
+.skill-item__desc ul{
+  margin-top: 0;
+}
+
+#github img{
+  fill: #e6c77a;
 }

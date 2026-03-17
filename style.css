@@ -529,6 +529,14 @@ a.link-pdf:hover{
 }
 }
 
+@media(max-width:391px){
+  .skill-icon#it{
+  transform: translate(0px, 9px); 
+  margin-right: 10px;
+}
+}
+
+
 
 
 /* Skill certification badge (top page) */
